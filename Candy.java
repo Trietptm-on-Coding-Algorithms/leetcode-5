@@ -1,3 +1,20 @@
+/**
+ * Strategy:
+ * 1. First ignore some requirements and give a quick solution.
+ * 2. Put constraints back and polish the quick solution accordingly.
+ * 
+ * In the following program, the quick solution is 
+ *      candy[i] = 1 + (ratings[i]>ratings[i-1]?) candy[i-1] : 0
+ * where candy[i] is the number of candies given to the ith child,
+ * and the constraints are the lower-bounds for each candy[i].
+ * 
+ * Other points are: 
+ * 1. building the lower-bounds in one phase, and
+ * 2. noting that we can give adjacent children different number
+ * of candies even though they have the same ratings.
+ * 
+ **/
+
 public class Solution {
     public int candy(int[] ratings) {
         int[] lwrbnds = new int[ratings.length];
