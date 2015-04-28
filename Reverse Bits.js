@@ -9,9 +9,12 @@ var reverseBits = function(n) {
   for(var i=1; i<32; i++) {
     ret <<= 1;
     ret += n % 2;
+    // be careful to use unsigned shift-right here
     n >>>= 1;
   }
-  ret *= 2;
+  // Since JavaScript doesn't have unsigned shift-left,
+  // we have to use * to prevent from changing the sign bit
+  ret *= 2;    
   ret += n % 2;
-  return ret >= 0 ? ret : -ret;
+  return ret;
 };
